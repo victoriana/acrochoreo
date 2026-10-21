@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+src/acrochoreo/__init__.py
+src/acrochoreo/llm_client.py
+src/acrochoreo/orchestrator.py
+src/acrochoreo.egg-info/PKG-INFO
+src/acrochoreo.egg-info/SOURCES.txt
+src/acrochoreo.egg-info/dependency_links.txt
+src/acrochoreo.egg-info/requires.txt
+src/acrochoreo.egg-info/top_level.txt
+tests/test_orchestrator.py

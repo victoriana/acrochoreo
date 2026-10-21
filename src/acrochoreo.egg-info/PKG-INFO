@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: acrochoreo
+Version: 0.1.0
+Requires-Python: >=3.10
+Requires-Dist: langgraph
+Requires-Dist: google-genai
+Requires-Dist: python-dotenv
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
