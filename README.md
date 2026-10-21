@@ -13,8 +13,8 @@ handoff is safe, and when the routine is performance-ready.
 - **Showtime check** (termination): model or max iterations decides when to stop
 - 
 ## Vision
-See VISION.md — this system is being developed toward a personal training
-journal where the human annotates and the system remembers.
+
+See [VISION.md](VISION.md) — this system is being developed toward a personal training journal where the human annotates and the system remembers.
 
 ## Related
 - [agentic-eval-harness](https://github.com/victoriana/agentic-eval-harness) — evaluation harness scores this system
