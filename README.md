@@ -1,6 +1,16 @@
 # Acrochoreo
 
-A simple version control system for acrobatic move sequences.
+A supervisor graph for orchestrating acrobatic move sequences.
+
+The name reflects the core problem: like a choreographer sequencing 
+moves, an orchestrator must decide which move executes next, when a 
+handoff is safe, and when the routine is performance-ready.
+
+## How It Works
+- **Choreographer** (supervisor node): model decides next move
+- **Acrobats** (specialist workers): execute individual moves
+- **Director** (critic node): judges readiness, triggers retries
+- **Showtime check** (termination): model or max iterations decides when to stop
 
 ## The Problem
 Acrobatic routines are a series of individual moves (e.g., `move_pirouette_left_to_right_stage`, `move_right_leg_kick`). When you tweak one move in a routine, you often have to rewrite the entire sequence from memory. This is error-prone and inefficient.
