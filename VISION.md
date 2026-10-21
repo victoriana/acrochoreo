@@ -27,8 +27,8 @@ that helps me:
 
 ## Goal
 
-To move from "trying random moves" to "practicing structured sequences
-with memory."
+A reliable home for a sequence I already have in mind, so revisions don't
+lose context between sessions.
 
 ---
 
