@@ -36,10 +36,10 @@ Acrochoreo is being developed toward a personal choreography journal that combin
 - **Solo athlete only.** One body, one sequence, one progression arc. No
   troupe logistics, no partner negotiation. The "human in the loop" is the
   athlete.
-- **Apparatus-aware specialization path:** floor, pole, aerial (silks, hoop),
-  and similar disciplines. Each apparatus has distinct failure modes, risk
-  classes, and flow logic; routing and critique specialize per apparatus while
-  the general supervisor architecture stays intact.
+- **Apparatus-aware specialization path:** floor, pole, and similar disciplines.
+- Each apparatus has distinct failure modes, risk classes, and flow logic;
+  routing and critique specialize per apparatus while the general supervisor
+  architecture stays intact.
 - **General-first, niche-later.** The current implementation is a general
   supervisor graph. Domain depth (apparatus constraints, per-discipline
   rubrics, progression gating) layers on top without rewriting the core.
