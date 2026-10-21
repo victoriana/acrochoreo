@@ -1,9 +1,5 @@
 # Acrochoreo
 
-A YAML-based version control system for acrobatic choreography.
-
-# Acrochoreo
-
 A simple version control system for acrobatic move sequences.
 
 ## The Problem
