@@ -1,7 +1,7 @@
 # Vision: Acrochoreo as a Training Journal
 
 *Design north star. This document describes direction, not current capability.
-See README.md for what exists today.*
+See [README.md](README.md) for what exists today.*
 
 ## The core idea
 
