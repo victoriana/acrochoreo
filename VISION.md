@@ -1,78 +1,35 @@
-# Vision: Acrochoreo as a Training Journal
+# Vision: Acrochoreo
 
-*Design north star. This document describes direction, not current capability.
-See [README.md](README.md) for what exists today.*
+*Design notes for a personal training tool.*
 
-## The core idea
+## Why this exists
 
-Most AI training tools tell you what you did wrong. This system does the
-opposite: it helps you remember what you already knew — across every session,
-every revision, every apparatus.
+I am learning basic floor acrobatic moves (spins, kicks, rolls, transitions).
+Most training tools are either too rigid (fixed curricula) or too disconnected
+(just a text log).
 
-Acrochoreo is being developed toward a personal choreography journal that combines versioned sequences, agentic cross-referencing, and human-authored annotation as a single loop.
+Acrochoreo is being built as a **personal, versioned choreography journal**
+that helps me:
 
-## Design principles
-
-1. **The human is the sole authority.** The agent never judges performance,
-   never auto-corrects, never dictates. All evaluation comes from human
-   annotations. The system's job is recall, coherence, and surfacing — not
-   instruction.
-
-2. **Surface, don't command.** Agent output takes the form of prompts to human
-   judgment ("you've flagged this transition as unstable four times but kept
-   it in rotation — revisit?"), never directives.
-
-3. **Superhuman memory, ordinary judgment.** The system holds everything a
-   paper journal can't: every annotation, every sequence version, every
-   dependency between moves. It connects patterns across time that no human
-   could track unaided.
-
-4. **Coherence over generation.** When one move changes, the supervisor graph
-   tracks which downstream elements depend on it, keeping the journal
-   internally consistent instead of drifting into contradictions.
+1.  **Sequence moves safely:** Define a routine as a list of moves, then
+    track how changes to one part affect the flow.
+2.  **Remember what I learned:** Keep a single source of truth for which
+    moves work, which don't, and why — across every practice session.
+3.  **Practice with context:** The system doesn't judge my form. It just
+    holds the structure so I can focus on execution.
 
 ## Scope
 
-- **Solo athlete only.** One body, one sequence, one progression arc. No
-  troupe logistics, no partner negotiation. The "human in the loop" is the
-  athlete.
-- **Apparatus-aware specialization path:** floor, pole, and similar disciplines.
-- Each apparatus has distinct failure modes, risk classes, and flow logic;
-  routing and critique specialize per apparatus while the general supervisor
-  architecture stays intact.
-- **General-first, niche-later.** The current implementation is a general
-  supervisor graph. Domain depth (apparatus constraints, per-discipline
-  rubrics, progression gating) layers on top without rewriting the core.
+- **Solo learner only.** No routines, no partners, no troupe logistics.
+- **Floor-focused for now.** Basic spins, kicks, floor work, and simple
+  transitions. Aerial and pole are future considerations.
+- **Human-annotated.** I decide what works. The system just reminds me.
 
-## The analogy
+## Goal
 
-Ableton didn't replace musicians with AI — it gave them non-destructive
-editing, undo, and version history for creative decisions. Nobody asks why a
-DAW needs undo. Acrochoreo applies the same logic to movement composition:
-non-destructive sequence revision, full history of choreographic decisions,
-and a recall layer over years of training notes.
+To move from "trying random moves" to "practicing structured sequences
+with memory."
 
-Movement notation tools exist. Training log apps exist. Music software with
-AI agents exists. Nothing combines versioned choreography + agentic
-cross-referencing + human-authored annotation in the acrobatics domain. That
-is the open territory.
+---
 
-## Where this goes
-
-- Annotation loop: sessions produce human-written notes; the system indexes
-  and links them to specific moves and sequence versions.
-- Cross-session correlation: recurring annotations surfaced automatically as
-  questions, never verdicts.
-- Progression tracking: element-level history per athlete (self-reported and
-  annotation-derived), enabling the Choreographer to respect prerequisites
-  and the Director to ask better questions.
-- Evaluation integration: agentic-eval-harness scores *journal quality and
-  consistency*, not the athlete.
-
-## Non-goals
-
-- Not an auto-judge of movement quality (no pose estimation verdicts).
-- Not a troupe or partner-acro coordination tool.
-- Not acro yoga — floor, pole, and aerial apparatus are the domain.
-- Not a replacement for coaching judgment; it is infrastructure *for* that
-  judgment.
+*See [README.md](README.md) for the current technical implementation.*
