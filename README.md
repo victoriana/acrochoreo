@@ -12,24 +12,6 @@ handoff is safe, and when the routine is performance-ready.
 - **Director** (critic node): judges readiness, triggers retries
 - **Showtime check** (termination): model or max iterations decides when to stop
 
-## The Problem
-Acrobatic routines are a series of individual moves (e.g., `move_pirouette_left_to_right_stage`, `move_right_leg_kick`). When you tweak one move in a routine, you often have to rewrite the entire sequence from memory. This is error-prone and inefficient.
-
-## The Solution
-`acrochoreo` treats each move as a discrete YAML file (prefixed with `move_`) and each routine as a simple list of those files (prefixed with `choreography_`). It allows you to:
-- **List:** Define a routine as a simple sequence of move IDs.
-- **Track:** Version-control the *routine* itself.
-- **Diff:** See exactly what changed between `v1` and `v2` of a routine. No more rewriting from memory.
-
-## Example Structure
-
-```yaml
-# choreographies/choreography_basic_v1.yaml
-moves:
-  - move_id: move_pirouette_left_to_right_stage
-  - move_id: move_right_leg_kick
-  - move_id: move_fold_in
-```
 ## Related
 - [agentic-eval-harness](https://github.com/victoriana/agentic-eval-harness) — evaluation harness scores this system
 - [github-actions-reusable-workflow](https://github.com/victoriana/github-actions-reusable-workflow) — CI governance template
