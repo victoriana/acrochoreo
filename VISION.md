@@ -22,7 +22,7 @@ that helps me:
 
 - **Solo learner only.** No routines, no partners, no troupe logistics.
 - **Floor-focused for now.** Basic spins, kicks, floor work, and simple
-  transitions. Aerial and pole are future considerations.
+  transitions. Basic Pole moves are future considerations.
 - **Human-annotated.** I decide what works. The system just reminds me.
 
 ## Goal
