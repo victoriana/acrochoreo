@@ -24,3 +24,6 @@ moves:
   - move_id: move_right_leg_kick
   - move_id: move_fold_in
 ```
+## Related
+- [agentic-eval-harness](https://github.com/victoriana/agentic-eval-harness) — evaluation harness scores this system
+- [github-actions-reusable-workflow](https://github.com/victoriana/github-actions-reusable-workflow) — CI governance template
