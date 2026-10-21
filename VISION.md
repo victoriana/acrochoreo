@@ -9,9 +9,7 @@ Most AI training tools tell you what you did wrong. This system does the
 opposite: it helps you remember what you already knew — across every session,
 every revision, every apparatus.
 
-Acrochoreo is being developed toward a **personal choreography journal on
-steroids**: versioned sequences, agentic cross-referencing, and human-authored
-annotation as a single loop.
+Acrochoreo is being developed toward a personal choreography journal that combines versioned sequences, agentic cross-referencing, and human-authored annotation as a single loop.
 
 ## Design principles
 
