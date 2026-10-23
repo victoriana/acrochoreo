@@ -30,23 +30,24 @@ After practicing your routine, boot the interactive journaling mode to capture y
 4.  **Versioning:** Your session is saved as a versioned entry. If you flag a "retry," the system automatically increments the version number, allowing you to compare v1 vs. v2 of the same sequence directly.
 
 **Example Session:**
-python run.py start
 
-## System prompts:
+###python run.py start
 
-## 📋 STEP 1: PHYSICAL EXECUTION LOG
-## Describe how you physically executed the sequence...
-## > Felt unstable on the round-off, rushed the back tuck entry.
+### System prompts:
 
-## 📋 STEP 2: CRITIQUE & EVALUATION  
-## Provide your evaluation and subjective assessment...
-## > Rhythm was choppy. Need to slow down the approach next time.
+### 📋 STEP 1: PHYSICAL EXECUTION LOG
+### Describe how you physically executed the sequence...
+### > Felt unstable on the round-off, rushed the back tuck entry.
 
-## 🔄 Practice/retry this again next session? (yes/no): yes
+### 📋 STEP 2: CRITIQUE & EVALUATION  
+### Provide your evaluation and subjective assessment...
+### > Rhythm was choppy. Need to slow down the approach next time.
 
-## ✅ Journal Session Finalized!
-## 🏷️ Semantic Search Tags Generated: balance-issue, rushed-entry, rhythm-choppy
-## 📖 History Summary: Saved Version 2 to memory.
+### 🔄 Practice/retry this again next session? (yes/no): yes
+
+### ✅ Journal Session Finalized!
+### 🏷️ Semantic Search Tags Generated: balance-issue, rushed-entry, rhythm-choppy
+### 📖 History Summary: Saved Version 2 to memory.
 
 ## Key Features
 
