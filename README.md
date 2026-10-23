@@ -31,20 +31,22 @@ After practicing your routine, boot the interactive journaling mode to capture y
 
 **Example Session:**
 python run.py start
-# System prompts:
-# 📋 STEP 1: PHYSICAL EXECUTION LOG
-# Describe how you physically executed the sequence...
-# > Felt unstable on the round-off, rushed the back tuck entry.
 
-# 📋 STEP 2: CRITIQUE & EVALUATION  
-# Provide your evaluation and subjective assessment...
-# > Rhythm was choppy. Need to slow down the approach next time.
+## System prompts:
 
-# 🔄 Practice/retry this again next session? (yes/no): yes
+## 📋 STEP 1: PHYSICAL EXECUTION LOG
+## Describe how you physically executed the sequence...
+## > Felt unstable on the round-off, rushed the back tuck entry.
 
-# ✅ Journal Session Finalized!
-# 🏷️ Semantic Search Tags Generated: balance-issue, rushed-entry, rhythm-choppy
-# 📖 History Summary: Saved Version 2 to memory.
+## 📋 STEP 2: CRITIQUE & EVALUATION  
+## Provide your evaluation and subjective assessment...
+## > Rhythm was choppy. Need to slow down the approach next time.
+
+## 🔄 Practice/retry this again next session? (yes/no): yes
+
+## ✅ Journal Session Finalized!
+## 🏷️ Semantic Search Tags Generated: balance-issue, rushed-entry, rhythm-choppy
+## 📖 History Summary: Saved Version 2 to memory.
 
 ## Key Features
 
