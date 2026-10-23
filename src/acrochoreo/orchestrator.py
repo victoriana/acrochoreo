@@ -6,52 +6,51 @@ class TaskState(TypedDict):
     result: str
     attempts: int
     max_attempts: int
+    status: Literal["continue", "done"]  # Fixed: Clean type checking for the loop
 
-def choreograph(state: TaskState) -> TaskState:
-    """Model decides which specialist handles this task."""
+def acrobat(state: TaskState) -> TaskState:
+    """The solo worker executing the acrobatic sequences."""
     from acrochoreo.llm_client import ask_ai
-    choice = ask_ai(
-        f"Task: {state['task']}. "
-        f"Choose which specialist handles it: A (creative) or B (analytical). "
-        f"Answer A or B."
-    )
-    return {**state, "next": "A" if "A" in choice else "B"}
-
-def specialist_a(state: TaskState) -> TaskState:
-    """Creative specialist."""
-    from acrochoreo.llm_client import ask_ai
-    result = ask_ai(f"[Creative] {state['task']}")
+    
+    # Pass the task and previous result if it's a retry
+    context = f"Task: {state['task']}"
+    if state["result"]:
+        context += f"\nPrevious attempt to refine: {state['result']}"
+        
+    result = ask_ai(f"[Acrobat worker] {context}")
     return {**state, "result": result, "attempts": state["attempts"] + 1}
 
-def specialist_b(state: TaskState) -> TaskState:
-    """Analytical specialist."""
-    from acrochoreo.llm_client import ask_ai
-    result = ask_ai(f"[Analytical] {state['task']}")
-    return {**state, "result": result, "attempts": state["attempts"] + 1}
-
-def should_continue(state: TaskState) -> Literal["continue", "done"]:
-    """Model judges if result is ready for show."""
+def supervisor(state: TaskState) -> TaskState:
+    """Combines choreographer & director: judges readiness and sets the route."""
     if state["attempts"] >= state["max_attempts"]:
-        return "done"
+        return {**state, "status": "done"}
+        
     from acrochoreo.llm_client import ask_ai
     verdict = ask_ai(
-        f"Result: {state['result']}. "
-        f"Ready for show? Answer CONTINUE or STOP."
+        f"Target Goal: {state['task']}\n"
+        f"Acrobat Output: {state['result']}\n"
+        f"Is this routine performance-ready? Answer CONTINUE to retry or STOP if it is perfect."
     )
-    return "continue" if "CONTINUE" in verdict.upper() else "done"
+    
+    status = "continue" if "CONTINUE" in verdict.upper() else "done"
+    return {**state, "status": status}
 
+# Building the streamlined graph
 workflow = StateGraph(TaskState)
-workflow.add_node("choreograph", choreograph)
-workflow.add_node("specialist_a", specialist_a)
-workflow.add_node("specialist_b", specialist_b)
-workflow.set_entry_point("choreograph")
 
-def route_to_specialist(state: TaskState) -> Literal["specialist_a", "specialist_b"]:
-    return "specialist_a" if "A" in state.get("next", "B") else "specialist_b"
+workflow.add_node("acrobat", acrobat)
+workflow.add_node("supervisor", supervisor)
 
-workflow.add_conditional_edges("choreograph", route_to_specialist)
-workflow.add_edge("specialist_a", "choreograph")
-workflow.add_edge("specialist_b", "choreograph")
-workflow.add_conditional_edges("choreograph", should_continue, {"continue": "choreograph", "done": END})
+# Entry point goes straight to the worker for the first attempt
+workflow.set_entry_point("acrobat")
+
+# The worker always hands off to the supervisor
+workflow.add_edge("acrobat", "supervisor")
+
+# The supervisor decides whether to loop back or terminate
+def route_decision(state: TaskState) -> Literal["acrobat", "__end__"]:
+    return "acrobat" if state["status"] == "continue" else END
+
+workflow.add_conditional_edges("supervisor", route_decision)
 
 app = workflow.compile()
