@@ -1,46 +1,59 @@
 # Acrochoreo
 
-A CLI-based agentic training journal that combines state-managed logging with AI-driven analysis.
+Your personal training journal for building acrobatic sequences.
 
-Acrochoreo helps you build and refine acrobatic move sequences by combining a local JSON ledger with an AI agent that generates semantic tags for your training notes.
+Acrochoreo helps you track your routine, log how it *felt* after practice, and automatically organize your progress so you can see exactly how your movement evolves over time.
 
 ## How It Works
 
-The system uses a **CLI interface** to manage sequences and an **interactive journaling session** to capture and analyze performance data.
+The system combines a simple command-line interface for managing your choreography with an interactive session that captures your subjective feedback after every run-through.
 
-### 1. Sequence Management
-Manage your routine using simple commands:
-- `show`: View your current active sequence.
-- `add <move>`: Append a new move to the sequence.
-- `remove <move>`: Delete a move from the sequence.
-- `replace <old> <new>`: Swap one move for another.
+### 1. Managing Your Routine
+Build your sequence using simple commands:
+- `show`: View your current active routine.
+- `add <move>`: Append a new move to the end of your sequence.
+- `remove <move>`: Delete a specific move from your routine.
+- `replace <old> <new>`: Swap a difficult element for a regression or variation.
 
-### 2. Agentic Journaling (`start`)
-Boot the interactive session to practice and record:
-1.  **Execution Log:** Describe your physical performance (balance, stability, transitions).
-2.  **Critique & Evaluation:** Provide subjective assessment (tightness, fluidity, rhythm).
-3.  **AI Analysis:** The system processes your notes via an LLM to generate semantic search tags (e.g., `balance-issue`, `fluid-transition`).
-4.  **Versioning:** Your session is saved as a versioned entry in the local ledger, with automatic version incrementing if a "retry" is flagged.
+**Example Workflow:**
+python run.py add "cartwheel"
+python run.py add "front handspring"
+python run.py replace "front handspring" "round-off back tuck"
+python run.py show
 
-## Architecture
+### 2. The Training Session (`start`)
+After practicing your routine, boot the interactive journaling mode to capture your performance:
 
-Acrochoreo implements a **single-node agentic engine** with native state management:
+1.  **Physical Execution Log:** Describe how the sequence *felt*. Note balance issues, transition speed, spatial awareness, or moments where you felt unstable.
+2.  **Critique & Evaluation:** Provide your subjective assessment. Was the rhythm fluid? Did you feel tight in the hips? Did the handoff feel safe?
+3.  **AI Analysis:** The system analyzes your notes to generate semantic tags (e.g., `balance-issue`, `fluid-transition`, `hip-flexibility`). This turns unstructured feelings into searchable data.
+4.  **Versioning:** Your session is saved as a versioned entry. If you flag a "retry," the system automatically increments the version number, allowing you to compare v1 vs. v2 of the same sequence directly.
 
--   **PureAgenticEngine:** A lightweight, compilation-free engine that manages the `JournalState` schema.
--   **JSON Ledger:** All state (sequences, history, tags) is persisted in a local `journal_ledger.json` file.
--   **AI Integration:** The engine calls an LLM client (`ask_ai`) to analyze human notes and generate structured metadata (tags).
--   **Conditional Routing:** The engine automatically increments version numbers based on the user’s "retry" status.
+**Example Session:**
+python run.py start
+# System prompts:
+# 📋 STEP 1: PHYSICAL EXECUTION LOG
+# Describe how you physically executed the sequence...
+# > Felt unstable on the round-off, rushed the back tuck entry.
+
+# 📋 STEP 2: CRITIQUE & EVALUATION  
+# Provide your evaluation and subjective assessment...
+# > Rhythm was choppy. Need to slow down the approach next time.
+
+# 🔄 Practice/retry this again next session? (yes/no): yes
+
+# ✅ Journal Session Finalized!
+# 🏷️ Semantic Search Tags Generated: balance-issue, rushed-entry, rhythm-choppy
+# 📖 History Summary: Saved Version 2 to memory.
 
 ## Key Features
 
--   **Native State Management:** Built from scratch using `TypedDict` and JSON persistence, avoiding external framework dependencies.
--   **Semantic Search:** AI-generated tags allow for easy retrieval of past sessions based on specific issues or successes.
--   **Human-in-the-Loop:** The system relies on human annotation for evaluation, with the AI providing structure and recall.
--   **CLI Interface:** Lightweight, portable, and easy to integrate into any workflow.
+-   **Memory Beyond Recall:** You don't have to remember why a transition failed three weeks ago. The system tags your sessions so you can search for past instances of specific issues.
+-   **Human-Led Coaching:** The AI doesn't judge your form; it structures *your* judgment. You provide the insight; the system provides the organization.
+-   **Sequence Evolution:** Track exactly when you swapped a move and why. See the history of your routine's development, not just its current state.
+-   **Portable & Private:** Runs locally on your machine. Your training data stays with you.
 
 ## Related
 
 -   [agentic-eval-harness](https://github.com/victoriana/agentic-eval-harness) — Evaluation harness that scores this system’s agent quality.
 -   [github-actions-reusable-workflow](https://github.com/victoriana/github-actions-reusable-workflow) — CI/CD pipeline that integrates the eval harness as a governance gate.
-
-
