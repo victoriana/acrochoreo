@@ -1,0 +1,19 @@
+{
+    "routine_session_v1": {
+        "sequence_id": "seq_001",
+        "target_moves": [
+            "pirouette_right",
+            "sidesplit_right",
+            "highkick_right"
+        ],
+        "version_history": [
+            {
+                "version": 1,
+                "human_notes": "[Physical Execution Log]: roughly its my first time I can elaborate but hey this is just starting out and I am no dancer\n[Evaluation & Critique]: it was slow and not at all precise",
+                "status": "retry"
+            }
+        ],
+        "current_version": 1,
+        "system_tags": []
+    }
+}

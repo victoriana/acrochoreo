@@ -72,6 +72,8 @@ def cmd_replace(args):
     print(f"🔄 Swapped '{old_move}' with '{new_move}'.")
     print(f"📋 New Sequence: {' -> '.join(moves)}")
 
+# Open run.py and make sure your cmd_start function handles the clean execution like this:
+
 def cmd_start(args):
     target_moves = load_moves()
     if not target_moves:
@@ -89,12 +91,13 @@ def cmd_start(args):
         "system_tags": []
     }
 
-    print("\n🚀 Initializing journal session in LangGraph...")
+    print("\n🚀 Initializing journal session...")
     app.invoke(initial_state, config=config)
-
-    current_state = app.get_state(config)
-    print(f"⏸️ Graph Interrupted successfully! Paused at node: '{current_state.next}'")
-    print(f"📈 Current Version Entry: {current_state.values['current_version']}")
+    
+    # Retrieve current snapshot from ledger file
+    state_snapshot = app.get_state(config)
+    print(f"⏸️ Ledger Checkpoint Saved! Ready for input.")
+    print(f"📈 Current Version Entry: {state_snapshot['current_version']}")
 
     print("\n" + "="*60)
     print("📋 STEP 1: PHYSICAL EXECUTION LOG")
@@ -119,20 +122,20 @@ def cmd_start(args):
 
     combined_notes = f"[Physical Execution Log]: {exec_notes}\n[Evaluation & Critique]: {eval_notes}"
     gym_log = {
-        "version": current_state.values["current_version"],
+        "version": state_snapshot["current_version"],
         "human_notes": combined_notes,
         "status": status
     }
 
-    print("\n¼📝 Updating state ledger with your structured notes...")
-    app.update_state(config, {"version_history": [gym_log]}, as_node="human_checkpoint")
+    print("\n📝 Updating state ledger with your structured notes...")
+    app.update_state(config, {"version_history": [gym_log]})
 
-    print("🤖 Processing notes with AI Agent...")
     final_output = app.invoke(None, config=config)
 
     print("\n✅ Journal Session Finalized and Versioned!")
     print(f"🏷️ Semantic Search Tags Generated: {final_output['system_tags']}")
     print(f"📖 History Summary: Saved Version {final_output['current_version']} to memory.")
+
 
 # --- MAIN PARSER ENTRYPOINT ---
 
