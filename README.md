@@ -31,7 +31,7 @@ After practicing your routine, boot the interactive journaling mode to capture y
 
 **Example Session:**
 
-###python run.py start
+### python run.py start
 
 ### System prompts:
 
